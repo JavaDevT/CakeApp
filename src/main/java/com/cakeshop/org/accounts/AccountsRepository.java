@@ -1,13 +1,12 @@
 package com.cakeshop.org.accounts;
 
 
-import com.cakeshop.org.config.HbmConfigApp;
+import com.cakeshop.org.utils.HbmConfigApp;
 import com.cakeshop.org.model.AdminLogin;
 import com.cakeshop.org.model.UserDetails;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -31,8 +30,8 @@ public class AccountsRepository implements AccountsDao {
             //no user availble chceck admin login
 
             Query admin = session.createQuery("from AdminLogin where userName=:userName and password=:password");
-            admin.setParameter("userName", "cake");
-            admin.setParameter("password", "Cake@123");
+            admin.setParameter("userName", username);
+            admin.setParameter("password", pass);
             AdminLogin adminModel = (AdminLogin) admin.uniqueResult();
 
             if (adminModel != null) {

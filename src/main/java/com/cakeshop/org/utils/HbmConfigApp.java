@@ -1,12 +1,10 @@
-package com.cakeshop.org.config;
+package com.cakeshop.org.utils;
 
-import jakarta.annotation.PostConstruct;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
 
 @Component
