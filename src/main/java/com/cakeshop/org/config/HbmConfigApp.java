@@ -38,8 +38,8 @@ public class HbmConfigApp {
     }
 
     public SessionFactory getSessionFactory() {
-        // if (sessionFactory == null)
-       //       createInstance();
+          if (sessionFactory == null)
+              init();
         return sessionFactory;
     }
 }
