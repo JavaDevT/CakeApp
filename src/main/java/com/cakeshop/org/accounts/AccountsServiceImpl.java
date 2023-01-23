@@ -11,6 +11,11 @@ public class AccountsServiceImpl implements AccountsService {
     AccountsDao  accountsDao;
     @Override
     public UserDetails checkUserLogin(String pass ,String username) {
-         return accountsDao. getAvailableUser(username,pass);
+         return accountsDao.getAvailableUser(username,pass);
       }
+
+    @Override
+    public String userRegister(UserDetails details) {
+        return  accountsDao.userRegistration(details);
+     }
 }

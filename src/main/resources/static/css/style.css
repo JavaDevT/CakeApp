@@ -1,0 +1,26 @@
+body{
+  height: 100%;
+  background-image: linear-gradient(to right, aqua , blue);
+ }
+.logincontainer {
+   background-color: white;
+    margin-top: 100px; margin-bottom: 100px;
+    border: 2px solid gainsboro;
+  border-radius: 5px;
+}
+ .centercontent{
+  float: none !important;
+   margin: 0 auto !important;
+ }
+ .no-outline:focus {
+  outline: none;
+  border: 0px;;
+} 
+.padding-empty{
+  padding: 0px;
+}
+#error-msg{
+color: red;
+margin-top: 20px;
+    text-align: center;
+}

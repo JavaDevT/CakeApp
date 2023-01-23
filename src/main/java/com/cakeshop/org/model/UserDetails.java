@@ -1,20 +1,69 @@
 package com.cakeshop.org.model;
 
 
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="userlogin")
 public class UserDetails {
 
+    @Transient
+    @JsonProperty
     private boolean isAdmin;
     @Id
-    @GeneratedValue(strategy= GenerationType.TABLE)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int userId;
+    @Column(name="userName")
     private String username;
-    private String address;
+    @Column(name="address_line2")
+     private String addressLineTwo;
+
+    @Column(name="pin_code")
+    private String pinCode;
+    @Column(name = "address_line1")
+    private String addressLineOne;
+    @Column(name = "phoneNumber")
     private String mobileNumber;
+
+    @Column(name = "password")
     private String password;
+    @Column(name = "email_id")
+    private String emailId;
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public String getAddressLineTwo() {
+        return addressLineTwo;
+    }
+
+    public void setAddressLineTwo(String addressLineTwo) {
+        this.addressLineTwo = addressLineTwo;
+    }
+
+    public String getPinCode() {
+        return pinCode;
+    }
+
+    public void setPinCode(String pinCode) {
+        this.pinCode = pinCode;
+    }
+
+    public String getAddressLineOne() {
+        return addressLineOne;
+    }
+
+    public void setAddressLineOne(String addressLineOne) {
+        this.addressLineOne = addressLineOne;
+    }
 
     public int getUserId() {
         return userId;
@@ -23,6 +72,8 @@ public class UserDetails {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    @Transient
     public boolean isAdmin() {
         return isAdmin;
     }
@@ -39,13 +90,6 @@ public class UserDetails {
         this.username = username;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getMobileNumber() {
         return mobileNumber;
