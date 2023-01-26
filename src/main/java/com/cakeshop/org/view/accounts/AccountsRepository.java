@@ -1,17 +1,13 @@
-package com.cakeshop.org.accounts;
+package com.cakeshop.org.view.accounts;
 
 
 import com.cakeshop.org.utils.HbmConfigApp;
 import com.cakeshop.org.model.AdminLogin;
 import com.cakeshop.org.model.UserDetails;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.sql.SQLDataException;
-import java.sql.SQLException;
 
 @Repository
 public class AccountsRepository implements AccountsDao {

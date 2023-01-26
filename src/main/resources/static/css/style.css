@@ -24,3 +24,44 @@ color: red;
 margin-top: 20px;
     text-align: center;
 }
+.center-div{
+  text-align: center;
+  display: flex;
+   align-items: center;
+   justify-content: center;
+   float: none; margin: auto;
+}
+.footer-menu{
+height: 30px;
+text-align: center;
+display: flex;
+ align-items: center;
+ justify-content: center;
+ text-decoration: none;
+ font-size: 15px;
+ color: white;
+ padding: 0px;
+}
+.footer-menu:hover{
+  text-decoration: none;
+   color: white;
+   border-radius: 3px;
+   color: black;
+  }
+  
+  #grid-item-inner{
+    border: 2px solid gainsboro;
+    border-radius: 5px;
+    margin: 0 10px 0 10px;
+    width: 30%;
+    margin: 0 18px 0 10px;;
+   }
+   .order-active{
+    background: darkblue;
+    }
+    table {
+      border-collapse: collapse;
+   }
+   table tr td {
+      border: 1px solid gray;
+   }

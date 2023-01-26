@@ -1,4 +1,4 @@
-package com.cakeshop.org.accounts;
+package com.cakeshop.org.view.accounts;
 
 import com.cakeshop.org.model.UserDetails;
 
