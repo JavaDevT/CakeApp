@@ -23,7 +23,7 @@ public class AccountMgmtController {
     public String login(HttpServletRequest httpServletRequest) {
         if (httpServletRequest.getSession().getAttribute("loginUser") != null) {
             if (httpServletRequest.getSession().getAttribute("loginUser").equals("admin"))
-                return "welcome_admin";
+                return "redirect:/welcome_admin";
             else return welcomeUser();
         }
         return "login";
@@ -39,27 +39,13 @@ public class AccountMgmtController {
         return "welcome-user";
     }
 
-    @GetMapping(value = "/welcome_admin")
+    @GetMapping("/welcome_admin")
     public String welcomeAdmin() {
          System.out.println("calling");
          return "welcome_admin";
     }
 
-    @GetMapping("/order_list")
-    public String orderList() {
-        return "order_list";
-    }
-
-    @GetMapping("/addproducts")
-    public String addProducts() {
-        return "addproducts";
-    }
-
-    @GetMapping("/view_order_details")
-    public String viewOrderDetails() {
-        return "view_order_details";
-    }
-
+/*
     @PostMapping("/login_user")
     public ModelAndView accountLogin(ModelMap model, HttpSession httpSession, @RequestParam String username, @RequestParam String userPassword) {
         UserDetails data = accountsDao.checkUserLogin(userPassword, username);
@@ -67,7 +53,6 @@ public class AccountMgmtController {
         if (data != null) {
             if (data.isAdmin()) {
                 httpSession.setAttribute("loginUser", "admin");
-              //  modelAndView.setViewName("redirect:"+welcomeAdmin());
                 modelAndView.setViewName("redirect:/welcome_admin");
             } else {
                 httpSession.setAttribute("loginUser", "user");
@@ -80,6 +65,24 @@ public class AccountMgmtController {
         }
         return modelAndView;
     }
+*/
+
+    @PostMapping("/login_user")
+    public String accountLogin(ModelMap model, HttpSession httpSession, @RequestParam String username, @RequestParam String userPassword) {
+        UserDetails data = accountsDao.checkUserLogin(userPassword, username);
+         if (data != null) {
+            if (data.isAdmin()) {
+                httpSession.setAttribute("loginUser", "admin");
+                return "redirect:/welcome_admin";
+            } else {
+                return "redirect:/welcome-user";
+            }
+
+        }
+            model.addAttribute("userData", "no user found");
+            return "redirect:/login";
+
+     }
 
     @PostMapping("/user_register")
     public String accountRegister(ModelMap model, @RequestParam String username, @RequestParam String password,
