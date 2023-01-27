@@ -80,7 +80,7 @@ public class AccountMgmtController {
 
         }
             model.addAttribute("userData", "no user found");
-            return "redirect:/login";
+            return "login";
 
      }
 
