@@ -14,13 +14,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link href="../css/style.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  <script src="../js/script.js"></script>
+  <script src="../resources/js/script.js"></script>
 
-    <link href="../resources/static/css/style.css" type="text/css" rel="stylesheet">
+    <link href="../resources/css/style.css" type="text/css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -58,7 +57,7 @@
         <div class="row" style=" margin-bottom: 50px;">
             <h1 style="margin-top: 50px;  text-align: center;
 ">Add new cake</h1>
-          <form  name="cake_details" onsubmit="return loginValidation()"   action="/login_user" method="post">
+          <form  name="cake_details" onsubmit="return loginValidation()"   action="/add_product" method="post">
 
            <div class="col-lg-8 border-bottom-0 centercontent" style="margin-left:20px;
 ">
@@ -76,7 +75,7 @@
                                 d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
                     </svg>
                 </div>
-                <div class="col-lg-11" style="padding:0px"><input id"username" name="username" type="text" oninput="removeLoginUserName()"
+                <div class="col-lg-11" style="padding:0px"><input id"username" name="cakeName" type="text" oninput="removeLoginUserName()"
                                                                   style="font-size: medium; width: 100%;border: 0px;"
                                                                   class="no-outline"
                                                                   placeholder="Please enter cake name"></div>
@@ -98,7 +97,7 @@
                                 d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
                     </svg>
                 </div>
-                <div class="col-lg-11" style="padding:0px"><input   oninput="removeLoginPass()" id ="password" name ="userPassword" type="password"
+                <div class="col-lg-11" style="padding:0px"><input   oninput="removeLoginPass()" id ="password" name ="price" type="password"
                                                                   style="font-size: medium; width: 100%;border: 0px;"
                                                                   class="no-outline"
                                                                   placeholder="Please enter price"></div>
@@ -121,10 +120,10 @@ margin-bottom: 5px;
           </svg>
       </div>
       <div class="col-lg-11" style="padding:0px">
-        <input   oninput="removeLoginPass()" id ="password" name ="userPassword" type="file"
+        <input   oninput="removeLoginPass()" id ="password" name ="eggImage" type="file"
                                                         style="font-size: medium; width: 100%;border: 0px;"
                                                         class="no-outline"
-                                                        placeholder="Please enter price"></div>
+                                                        ></div>
       <div class="col-lg-12"  id="passLine"style="height: 1px;
 background: gray;margin-top: 5px;;"></div>
 
@@ -143,17 +142,17 @@ margin-bottom: 5px;
                       d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
           </svg>
       </div>
-      <div class="col-lg-11" style="padding:0px"><input   oninput="removeLoginPass()" id ="password" name ="userPassword" type="number" max="100"
+      <div class="col-lg-11" style="padding:0px"><input   oninput="removeLoginPass()" id ="password" name ="quantity" type="number" max="100"
                                                         style="font-size: medium; width: 100%;border: 0px;"
                                                         class="no-outline"
-                                                        placeholder="Please enter price"></div>
+                                                        placeholder="Please enter quantity"></div>
       <div class="col-lg-12" id="passLine"style="height: 1px;
 background: gray;"></div>
 <br><br> 
 
 <br>
 
-<input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+<input type="checkbox" id="vehicle3" name="eggLess"  value="Boat">
 <label for="vehicle3" style="font-size: 13px; padding-left: 5px;">   Egg less</label><br>
 
           <div> <h4 id="error-msg">${userData}</h4></div>

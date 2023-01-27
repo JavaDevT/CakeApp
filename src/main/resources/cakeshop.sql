@@ -15,7 +15,7 @@ create table userLogin  (userId int not null AUTO_INCREMENT,
  cake_name varchar(50) ,price_kg decimal (8,2), quantity mediumint unsigned, egg_less  boolean   , cake_image blob,primary key (cake_id))
 
 
-  insert into cake_info(cake_name,price_kg,quantity,egg_less,cake_image) values ('cake',22.55,1,true,'fgfd')
+  insert into cake_info(cake_name,price_kg,quantity,egg_less,cake_image) values ('cake','22.55',1,true,'fgfd')
 
   drop table cake_info
  select * from cake_info
@@ -23,4 +23,4 @@ create table userLogin  (userId int not null AUTO_INCREMENT,
 
 
 
- select * from userlogin
+	 select * from userlogin

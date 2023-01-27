@@ -39,11 +39,7 @@ public class AccountMgmtController {
         return "welcome-user";
     }
 
-    @GetMapping("/welcome_admin")
-    public String welcomeAdmin() {
-         System.out.println("calling");
-         return "welcome_admin";
-    }
+
 
 /*
     @PostMapping("/login_user")
