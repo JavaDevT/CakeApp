@@ -2,9 +2,10 @@ package com.cakeshop.org.view.accounts;
 
 
 import com.cakeshop.org.model.UserDetails;
- import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
- import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class AccountMgmtController {
 
     @Autowired
+    @Qualifier(value = "accountsService")
     AccountsService accountsDao;
-
 
     @GetMapping("/login")
     public String login(HttpServletRequest httpServletRequest) {
@@ -66,7 +67,7 @@ public class AccountMgmtController {
     @PostMapping("/login_user")
     public String accountLogin(ModelMap model, HttpSession httpSession, @RequestParam String username, @RequestParam String userPassword) {
         UserDetails data = accountsDao.checkUserLogin(userPassword, username);
-         if (data != null) {
+        if (data != null) {
             if (data.isAdmin()) {
                 httpSession.setAttribute("loginUser", "admin");
                 return "redirect:/welcome_admin";
@@ -75,10 +76,10 @@ public class AccountMgmtController {
             }
 
         }
-            model.addAttribute("userData", "no user found");
-            return "login";
+        model.addAttribute("userData", "no user found");
+        return "login";
 
-     }
+    }
 
     @PostMapping("/user_register")
     public String accountRegister(ModelMap model, @RequestParam String username, @RequestParam String password,

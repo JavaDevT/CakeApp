@@ -19,8 +19,7 @@
                                 href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
                         <link href="../resources/static/css/style.css" type="text/css" rel="stylesheet">
-  <link href="../css/style.css" type="text/css" rel="stylesheet">
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
                         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 
@@ -41,12 +40,13 @@
                                         <div class="col-lg-12 " style="height: 70px; ">
 
 
-                                                <div class="col-lg-4 center-div "
+                                                <div class="col-lg-5 center-div "
                                                         style="height: 70px; justify-content: right; float: right; text-align: right;  ">
-
-                                                        <a class="col-lg-4   footer-menu"
+                                                        <a class="col-lg-3   footer-menu"
+                                                           href="/welcome_admin">Product List</a>
+                                                        <a class="col-lg-3   footer-menu"
                                                                 href="/order_list">Order List</a>
-                                                        <a class="col-lg-4   footer-menu"
+                                                        <a class="col-lg-3   footer-menu"
                                                                 href="addproducts"> Add
                                                                 Product</a>
 
@@ -95,7 +95,7 @@
                                                                   <div class="col-lg-12" style="background-color: gray; height: 1px;"></div>
 <div class="col-lg-12" id="grid-item" style="margin-top: 15px;">
         <div class="col-lg-4" id="grid-item-inner" style="height: 300px; background-color: aquamarine;">
-                <img src="../resources/static/image/cake_1.jpg" width="90%" style="margin-top: 5px;" height="60%">
+                <img src="../resources/image/cake_1.jpg" width="90%" style="margin-top: 5px;" height="60%">
                 <div class="col-lg-12">
                         <h5 style="color: blue;float: left;">Product Name</h5>
                 </div>

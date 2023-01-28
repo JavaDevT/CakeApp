@@ -5,14 +5,16 @@ import com.cakeshop.org.model.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("accountsService")
-public class AccountsServiceImpl implements AccountsService {
+@Service("accountsServiceTest")
+public class AccountsServiceImplTest implements AccountsService {
+
+    //tightly coupled checked
     @Autowired
     AccountsDao  accountsDao;
     @Override
     public UserDetails checkUserLogin(String pass ,String username) {
-        System.out.println("AccountsServiceImpl");
-        return accountsDao.getAvailableUser(username,pass);
+        System.out.println("AccountsServiceImplTest");
+         return accountsDao.getAvailableUser(username,pass);
       }
 
     @Override

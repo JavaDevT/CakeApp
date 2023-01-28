@@ -15,7 +15,7 @@ public class AddProducts {
     private String cakeName;
 
     @Column(name = "price_kg")
-    private String priceInKg;
+    private String price;
 
      private int quantity;
      @Column(name = "egg_less")
@@ -41,12 +41,12 @@ public class AddProducts {
         this.cakeName = cakeName;
     }
 
-    public String getPriceInKg() {
-        return priceInKg;
+    public String getPrice() {
+        return price;
     }
 
-    public void setPriceInKg(String priceInKg) {
-        this.priceInKg = priceInKg;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public int getQuantity() {

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class OrderListController {
     @GetMapping("/order_list")
     public String orderList() {
+
+
         return "order_list";
     }
 }

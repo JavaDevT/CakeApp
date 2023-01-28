@@ -2,9 +2,12 @@ package com.cakeshop.org.view.addproducts;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AddProductsController {
@@ -13,33 +16,46 @@ public class AddProductsController {
 
     @GetMapping("/addproducts")
     public String addProducts() {
-        AddProducts addProducts = creteProduct("cakeName", "1", 1, true, "d");
-        int ans = addProductsService.saveProducts(addProducts);
-        System.out.println("ans   " + ans);
+        // AddProducts addProducts = creteProduct("cakeName", "1", 1, true, "d");
+        //int ans = addProductsService.saveProducts(addProducts);
+        // System.out.println("ans   " + ans);
         return "addproducts";
     }
 
-    @PostMapping("/add_product")
+    /*@PostMapping("/add_product")
     public String addProducts(@RequestParam String cakeName, @RequestParam String price,
-                                      @RequestParam int quantity, @RequestParam (defaultValue = "false") boolean eggLess, @RequestParam String eggImage) {
+                              @RequestParam int quantity, @RequestParam(defaultValue = "false") boolean eggLess, @RequestParam String eggImage) {
         AddProducts addProducts = creteProduct(cakeName, price, quantity, eggLess, eggImage);
         int ans = addProductsService.saveProducts(addProducts);
         System.out.println("ans   " + ans);
         return "add_product";
+    }*/
+
+    @PostMapping("/add_product")
+    public ModelAndView addProducts(ModelAndView modelAndView, ModelMap map, @ModelAttribute("products") AddProducts e, BindingResult br) {
+        int ans = addProductsService.saveProducts(e);
+        if (ans > 0) {
+            map.addAttribute("msg", "Cake added successfully");
+            modelAndView.setViewName("redirect:/welcome_admin");
+        } else {
+            map.addAttribute("msg", "Some thing went wrong");
+            modelAndView.setViewName("redirect:/addproducts");
+        }
+        return modelAndView;
     }
 
     private AddProducts creteProduct(String cakeName, String price, int quantity, boolean eggLess, String eggImage) {
         AddProducts addProducts = new AddProducts();
-       /* addProducts.setCakeName(cakeName);
-        addProducts.setPriceInKg(price);
+        addProducts.setCakeName(cakeName);
+        addProducts.setPrice(price);
         addProducts.setQuantity(quantity);
         addProducts.setEggLess(eggLess);
-        addProducts.setCakeImage(eggImage);*/
-        addProducts.setCakeName("cakeName");
+        addProducts.setCakeImage(eggImage);
+      /*  addProducts.setCakeName("cakeName");
         addProducts.setPriceInKg("1");
         addProducts.setQuantity(2);
         addProducts.setEggLess(true);
-        addProducts.setCakeImage("kk");
+        addProducts.setCakeImage("kk");*/
         return addProducts;
     }
 }

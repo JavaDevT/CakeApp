@@ -17,9 +17,9 @@
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  <script src="../resources/js/script.js"></script>
+  <script src="../resources/static/js/script.js"></script>
 
-    <link href="../resources/css/style.css" type="text/css" rel="stylesheet">
+    <link href="../resources/static/css/style.css" type="text/css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -40,15 +40,17 @@
         <div class="col-lg-12 " style="height: 70px; ">
 
 
-            <div class="col-lg-4 center-div " style="height: 70px; justify-content: right;
-                    float: right; text-align: right; ">
+                                                <div class="col-lg-5 center-div "
+                                                        style="height: 70px; justify-content: right; float: right; text-align: right;  ">
+                                                        <a class="col-lg-3   footer-menu"
+                                                           href="/welcome_admin">Product List</a>
+                                                        <a class="col-lg-3   footer-menu"
+                                                                href="/order_list">Order List</a>
+                                                        <a class="col-lg-3   footer-menu"
+                                                                href="addproducts"> Add
+                                                                Product</a>
 
-               <a class="col-lg-4   footer-menu"
-                                                                             href="/order_list">Order List</a>
-                                                                     <a class="col-lg-4   footer-menu"
-                                                                             href="addproducts"> Add
-                                                                             Product</a>
-                <a class="col-lg-3 footer-menu" href="#">Logout</a>
+                                                        <a class="col-lg-3  footer-menu" href="#">Logout</a>
             </div>
         </div>
     </div>
@@ -57,7 +59,7 @@
         <div class="row" style=" margin-bottom: 50px;">
             <h1 style="margin-top: 50px;  text-align: center;
 ">Add new cake</h1>
-          <form  name="cake_details" onsubmit="return loginValidation()"   action="/add_product" method="post">
+          <form:form  name="cake_details" onsubmit="return cake()"  modelAttribute="products"  action="/add_product" method="post">
 
            <div class="col-lg-8 border-bottom-0 centercontent" style="margin-left:20px;
 ">
@@ -75,7 +77,7 @@
                                 d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
                     </svg>
                 </div>
-                <div class="col-lg-11" style="padding:0px"><input id"username" name="cakeName" type="text" oninput="removeLoginUserName()"
+                <div class="col-lg-11" style="padding:0px"><input id"username" name="cakeName" path="cakeName" type="text" oninput="removeLoginUserName()"
                                                                   style="font-size: medium; width: 100%;border: 0px;"
                                                                   class="no-outline"
                                                                   placeholder="Please enter cake name"></div>
@@ -97,7 +99,7 @@
                                 d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
                     </svg>
                 </div>
-                <div class="col-lg-11" style="padding:0px"><input   oninput="removeLoginPass()" id ="password" name ="price" type="password"
+                <div class="col-lg-11" style="padding:0px"><input  path="price" oninput="removeLoginPass()" id ="password" name ="price" type="number"
                                                                   style="font-size: medium; width: 100%;border: 0px;"
                                                                   class="no-outline"
                                                                   placeholder="Please enter price"></div>
@@ -120,7 +122,7 @@ margin-bottom: 5px;
           </svg>
       </div>
       <div class="col-lg-11" style="padding:0px">
-        <input   oninput="removeLoginPass()" id ="password" name ="eggImage" type="file"
+        <input  path="cakeImage" oninput="removeLoginPass()" id ="password" name ="eggImage" type="file"
                                                         style="font-size: medium; width: 100%;border: 0px;"
                                                         class="no-outline"
                                                         ></div>
@@ -142,7 +144,7 @@ margin-bottom: 5px;
                       d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
           </svg>
       </div>
-      <div class="col-lg-11" style="padding:0px"><input   oninput="removeLoginPass()" id ="password" name ="quantity" type="number" max="100"
+      <div class="col-lg-11" style="padding:0px"><input  path="quantity" oninput="removeLoginPass()" id ="password" name ="quantity" type="number" max="100"
                                                         style="font-size: medium; width: 100%;border: 0px;"
                                                         class="no-outline"
                                                         placeholder="Please enter quantity"></div>
@@ -152,7 +154,7 @@ background: gray;"></div>
 
 <br>
 
-<input type="checkbox" id="vehicle3" name="eggLess"  value="Boat">
+<input type="checkbox"  path="eggLess" name="eggLess"  value="Boat">
 <label for="vehicle3" style="font-size: 13px; padding-left: 5px;">   Egg less</label><br>
 
           <div> <h4 id="error-msg">${userData}</h4></div>
@@ -169,7 +171,7 @@ background: gray;"></div>
 
                 </div>
 
-            </div></form>
+            </div></form:form>
 
 
         </div>

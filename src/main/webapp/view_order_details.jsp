@@ -14,12 +14,12 @@
                     initial-scale=1">
 
 
-            <link href="../css/style.css" type="text/css" rel="stylesheet">
+            <link href="../resources/stati/css/style.css" type="text/css" rel="stylesheet">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-            <script src="../js/script.js"></script>
+            <script src="../resources/static/js/script.js"></script>
 
-            <link href="../resources/static/css/style.css" type="text/css" rel="stylesheet">
+            <link href="../resources/css/style.css" type="text/css" rel="stylesheet">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -40,16 +40,18 @@
                         <div class="col-lg-12 " style="height: 70px; ">
 
 
-                            <div class="col-lg-4 center-div " style="height: 70px; justify-content: right;
-                                    float: right; text-align: right; ">
 
-                                <a class="col-lg-4   footer-menu"
-                                                                                              href="/order_list">Order List</a>
-                                                                                      <a class="col-lg-4   footer-menu"
-                                                                                              href="addproducts"> Add
-                                                                                              Product</a>
+                                                <div class="col-lg-5 center-div "
+                                                        style="height: 70px; justify-content: right; float: right; text-align: right;  ">
+                                                        <a class="col-lg-3   footer-menu"
+                                                         href="/welcome_admin">Product List</a>
+                                                        <a class="col-lg-3   footer-menu"
+                                                                href="/order_list">Order List</a>
+                                                        <a class="col-lg-3   footer-menu"
+                                                                href="addproducts"> Add
+                                                                Product</a>
 
-                                <a class="col-lg-3 footer-menu" href="#">Logout</a>
+                                                        <a class="col-lg-3  footer-menu" href="#">Logout</a>
                             </div>
                         </div>
                     </div>
