@@ -54,7 +54,7 @@ display: flex;
     border-radius: 5px;
     margin: 0 10px 0 10px;
     width: 30%;
-    margin: 0 18px 0 10px;;
+    margin: 0 18px 18px 10px;;
    }
    .order-active{
     background: darkblue;
@@ -65,3 +65,4 @@ display: flex;
    table tr td {
       border: 1px solid gray;
    }
+   

@@ -1,7 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-        <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-                <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+  <%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ page import="com.cakeshop.org.view.addproducts.AddProducts"%>
+    <%@ taglib prefix="data" uri="http://www.springframework.org/tags/form"%>
 
+<!DOCTYPE html>
 
                 <html>
 
@@ -17,8 +20,9 @@
 
                         <link rel="stylesheet"
                                 href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+                 <script src="../resources/js/script.js"></script>
 
-                        <link href="../resources/static/css/style.css" type="text/css" rel="stylesheet">
+                        <link href="../resources/css/style.css" type="text/css" rel="stylesheet">
                          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
                         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -35,7 +39,19 @@
                 </head>
 
                 <body>
-                        <div class="col-lg-12">
+                        <div class="col-lg-12">        
+                        <%!  ArrayList<AddProducts> data; %>         
+                     <% 
+                    if(request.getAttribute("productList")!=null){
+                    
+                    data = (ArrayList<AddProducts>)request.getAttribute("productList");}
+                    else {data=new ArrayList();}
+                
+                    %> 
+                   
+                    
+                    
+
                                 <div class="row">
                                         <div class="col-lg-12 " style="height: 70px; ">
 
@@ -94,23 +110,30 @@
                                                         </div>                                      
                                                                   <div class="col-lg-12" style="background-color: gray; height: 1px;"></div>
 <div class="col-lg-12" id="grid-item" style="margin-top: 15px;">
-        <div class="col-lg-4" id="grid-item-inner" style="height: 300px; background-color: aquamarine;">
+      
+      <% for(AddProducts productData : data){ %>
+        <div class="col-lg-4 grid-item-font" id="grid-item-inner" style="height: 310px; background-color: aquamarine;">
                 <img src="../resources/image/cake_1.jpg" width="90%" style="margin-top: 5px;" height="60%">
                 <div class="col-lg-12">
-                        <h5 style="color: blue;float: left;">Product Name</h5>
+                        <h5  style="padding: 4px; font-size: 15px; color: black;">Product Name: <%= " "+productData.getCakeName() %></h5>
                 </div>
                 <div class="col-lg-12">
-                        <h5 style="color: blue;float: left;">Product Code</h5>
+                        <h5   style="padding: 4px; font-size: 15px; color: black;">Price:<%= " "+productData.getPrice()+" INR" %></h5>
                 </div>
                 <div class="col-lg-12">
-                        <h5 style="color: blue;float: left;">Available Quantity</h5>
+                        <h5  style="padding: 4px; font-size: 15px; color: black;" >Available Quantity:<%= " "+productData.getQuantity() %></h5>
                 </div>
                 <div class="col-lg-12" style="justify-content: center;
                 display: flex;">
-                        <a class="col-lg-8  footer-menu"     href="addproducts"> <h5 style="color: blue;margin-top: 5px;">Edit product</h5>
+                        <a class="col-lg-8  footer-menu"  href="edit_product?id=<%=productData.getId() %>"> <h5 style="padding: 4px; font-size: 15px; color: darkblue;">Edit product</h5>
                         </a>
                 </div>
-        </div>
+        </div><%} %>
+        <% if(data.size()==0){
+        	%> <h3 style="color: black;"> No Cakes Found</h3><%   
+        } %>
+       
+        
 
 </div>
 
