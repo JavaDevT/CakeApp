@@ -13,4 +13,14 @@ public class AddProductsServiceImpl implements AddProductsService {
     public int saveProducts(AddProducts addProducts) {
         return addProductsRepository.saveProduct(addProducts);
     }
+
+    @Override
+    public AddProducts findProducts(int id) {
+        return addProductsRepository.findProducts(id);
+     }
+
+    @Override
+    public boolean upDateProduct(AddProducts id) {
+        return addProductsRepository.updateProduct(id);
+    }
 }

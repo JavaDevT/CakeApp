@@ -1,3 +1,5 @@
+<%@page import="java.util.Optional"%>
+<%@page import="com.cakeshop.org.view.addproducts.AddProducts"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -54,6 +56,13 @@
             </div>
         </div>
     </div>
+      <%!  AddProducts  addProducts;boolean isEditProduct=false; %>         
+    <%  if(request.getAttribute("editData")!=null){
+    	 addProducts=(AddProducts)request.getAttribute("editData"); 
+    }
+   
+         if(addProducts!=null){isEditProduct=true;}
+    %>
     <div class="col-lg-5 col-md-5 col-sm-8 col-xs-10  logincontainer" style="float: none;
      margin: 0 auto; margin-top: 50px;margin-bottom: 20px;">
         <div class="row" style=" margin-bottom: 50px;">
@@ -77,7 +86,7 @@
                                 d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
                     </svg>
                 </div>
-                <div class="col-lg-11" style="padding:0px"><input id"username" name="cakeName" path="cakeName" type="text" oninput="removeLoginUserName()"
+                <div class="col-lg-11" style="padding:0px"><input id"username" value=<%=Optional.of(addProducts.getCakeName()).orElse("") %> name="cakeName" path="cakeName" type="text" oninput="removeLoginUserName()"
                                                                   style="font-size: medium; width: 100%;border: 0px;"
                                                                   class="no-outline"
                                                                   placeholder="Please enter cake name"></div>
@@ -99,7 +108,7 @@
                                 d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
                     </svg>
                 </div>
-                <div class="col-lg-11" style="padding:0px"><input  path="price" oninput="removeLoginPass()" id ="password" name ="price" type="number"
+                <div class="col-lg-11" style="padding:0px"><input  path="price" value=<%=Optional.of(addProducts.getPrice()).orElse("")%> oninput="removeLoginPass()" id ="password" name ="price" type="number"
                                                                   style="font-size: medium; width: 100%;border: 0px;"
                                                                   class="no-outline"
                                                                   placeholder="Please enter price"></div>
@@ -122,7 +131,7 @@ margin-bottom: 5px;
           </svg>
       </div>
       <div class="col-lg-11" style="padding:0px">
-        <input  path="cakeImage" oninput="removeLoginPass()" id ="password" name ="eggImage" type="file"
+        <input  path="cakeImage" oninput="removeLoginPass()" id ="password" value=<%=Optional.of(addProducts.getCakeImage()).orElse("")%>  name ="eggImage" type="file"
                                                         style="font-size: medium; width: 100%;border: 0px;"
                                                         class="no-outline"
                                                         ></div>
@@ -144,7 +153,7 @@ margin-bottom: 5px;
                       d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
           </svg>
       </div>
-      <div class="col-lg-11" style="padding:0px"><input  path="quantity" oninput="removeLoginPass()" id ="password" name ="quantity" type="number" max="100"
+      <div class="col-lg-11" style="padding:0px"><input  path="quantity" oninput="removeLoginPass()" value=<%=Optional.of(addProducts.getQuantity()).orElse(0)%> id ="password" name ="quantity" type="number" max="100"
                                                         style="font-size: medium; width: 100%;border: 0px;"
                                                         class="no-outline"
                                                         placeholder="Please enter quantity"></div>
@@ -154,13 +163,14 @@ background: gray;"></div>
 
 <br>
 
-<input type="checkbox"  path="eggLess" name="eggLess"  value="Boat">
+<input type="checkbox"  path="eggLess" name="eggLess"  va value="Boat"  <%=Optional.of(addProducts.isEggLess()).orElse(false)%>>
 <label for="vehicle3" style="font-size: 13px; padding-left: 5px;">   Egg less</label><br>
 
           <div> <h4 id="error-msg">${userData}</h4></div>
+          <input type="hidden" id="custId" name="isEditProduct" value=<%= isEditProduct %> >
+          <input type="hidden" id="custId" name="proID" value=<%= addProducts.getId() %> >
 
-
-                <div class="col-lg-12 padding-empty  " style="margin-top: 20px; ">
+                <div class="col-lg-12 padding-empty" style="margin-top: 20px; ">
                     <div class="col-lg-6" style="margin: 0 auto;
                     float: none;">
                         <button type="submit" class="btn btn-primary" style="width: 100%;

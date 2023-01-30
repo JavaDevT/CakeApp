@@ -19,8 +19,8 @@ public class AddProductsRepository {
 
             Session session = hbmConfigApp.getSessionFactory().openSession();
             int productId = (Integer) session.save(addProducts);
-            System.out.println("repso  "+productId);
-            //session.save(addProducts);
+            System.out.println("repso  " + productId);
+             //session.save(addProducts);
             session.close();
             return productId;
         } catch (Exception e) {
@@ -28,5 +28,34 @@ public class AddProductsRepository {
         }
 
         return -1;
+    }
+
+    public int editProduct(int id) {
+        return 0;
+    }
+
+    public AddProducts findProducts(int id) {
+        try {
+            return (AddProducts) hbmConfigApp.getSessionFactory().openSession().get(AddProducts.class, id);
+        } catch (Exception ignored) {
+        }
+        return null;
+    }
+
+    public boolean updateProduct(AddProducts id) {
+        boolean status = false;
+        try {
+
+            Session session = hbmConfigApp.getSessionFactory().openSession();
+            AddProducts student = session.load(AddProducts.class, id.getId());
+          //   student.setCakeName(id.getCakeName());
+             session.saveOrUpdate(id);
+            status = true;
+            session.close();
+        } catch (Exception e) {
+            System.out.println("error  " + e.getMessage() + "" + e.getLocalizedMessage());
+        }
+
+        return status;
     }
 }

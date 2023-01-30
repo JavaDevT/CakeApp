@@ -125,7 +125,7 @@
                 </div>
                 <div class="col-lg-12" style="justify-content: center;
                 display: flex;">
-                        <a class="col-lg-8  footer-menu"  href="edit_product?id=<%=productData.getId() %>"> <h5 style="padding: 4px; font-size: 15px; color: darkblue;">Edit product</h5>
+                        <a class="col-lg-8  footer-menu"   href="edit_product?id=<%= productData.getId()  %>"> <h5 style="padding: 4px; font-size: 15px; color: darkblue;">Edit product</h5>
                         </a>
                 </div>
         </div><%} %>
