@@ -1,6 +1,7 @@
 package com.cakeshop.org.utils;
 
-import org.hibernate.SessionFactory;
+ import jakarta.annotation.PostConstruct;
+ import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -15,7 +16,7 @@ public class HbmConfigApp {
    //     createInstance();
    // }
 
-     // @PostConstruct
+
     public void init() {
 
         try {
@@ -34,10 +35,13 @@ public class HbmConfigApp {
       //  cfg.configure("hibernate.cfg.xml");
       //  sessionFactory = cfg.buildSessionFactory();
     }
-
+   // @PostConstruct
+   /// public void inits() {
+  //      System.out.println("PropertyLoader.init()");
+  //  }
     public SessionFactory getSessionFactory() {
-          if (sessionFactory == null)
-              init();
+           if (sessionFactory == null)
+               init();
         return sessionFactory;
     }
 }

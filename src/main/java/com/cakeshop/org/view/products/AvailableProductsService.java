@@ -1,6 +1,6 @@
 package com.cakeshop.org.view.products;
 
-import com.cakeshop.org.view.addproducts.AddProducts;
+import com.cakeshop.org.model.AddProducts;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.cakeshop.org.view.addproducts;
+package com.cakeshop.org.model;
 
 
 import javax.persistence.*;

@@ -2,7 +2,7 @@ package com.cakeshop.org.view.products;
 
 
 import com.cakeshop.org.utils.HbmConfigApp;
-import com.cakeshop.org.view.addproducts.AddProducts;
+import com.cakeshop.org.model.AddProducts;
 import org.hibernate.query.Query;
 
  import org.hibernate.Session;

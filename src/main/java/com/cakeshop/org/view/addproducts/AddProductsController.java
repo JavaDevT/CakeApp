@@ -1,5 +1,6 @@
 package com.cakeshop.org.view.addproducts;
 
+import com.cakeshop.org.model.AddProducts;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
