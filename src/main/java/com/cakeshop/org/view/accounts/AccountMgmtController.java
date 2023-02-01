@@ -70,7 +70,7 @@ public class AccountMgmtController {
         if (data != null) {
             if (data.isAdmin()) {
                 httpSession.setAttribute("loginUser", "admin");
-                return "welcome_admin";
+                return "redirect:/welcome_admin";
             } else {
                 return "redirect:/welcome-user";
             }

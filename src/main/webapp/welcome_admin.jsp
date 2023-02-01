@@ -1,7 +1,7 @@
   <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="com.cakeshop.org.view.addproducts.AddProducts"%>
+<%@page import="com.cakeshop.org.model.*"%>
     <%@ taglib prefix="data" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
