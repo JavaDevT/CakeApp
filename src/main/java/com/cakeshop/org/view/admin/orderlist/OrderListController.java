@@ -1,4 +1,4 @@
-package com.cakeshop.org.view.orderlist;
+package com.cakeshop.org.view.admin.orderlist;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

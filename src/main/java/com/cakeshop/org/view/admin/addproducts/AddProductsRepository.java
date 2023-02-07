@@ -1,4 +1,4 @@
-package com.cakeshop.org.view.addproducts;
+package com.cakeshop.org.view.admin.addproducts;
 
 import com.cakeshop.org.model.AddProducts;
 import com.cakeshop.org.utils.HbmConfigApp;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-@Component
 @Repository
 public class AddProductsRepository {
 

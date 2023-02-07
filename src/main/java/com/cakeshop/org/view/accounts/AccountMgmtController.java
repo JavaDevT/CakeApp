@@ -35,9 +35,9 @@ public class AccountMgmtController {
         return "register";
     }
 
-    @GetMapping("/welcome-user")
+    @GetMapping("/welcome_user")
     public String welcomeUser() {
-        return "welcome-user";
+        return "order";
     }
 
 
@@ -72,13 +72,13 @@ public class AccountMgmtController {
                 httpSession.setAttribute("loginUser", "admin");
                 return "redirect:/welcome_admin";
             } else {
-                return "redirect:/welcome-user";
+                return "redirect:/order";
             }
 
         }
         model.addAttribute("userData", "no user found");
-        return "login";
-
+       // return "login";
+        return "redirect:/order";
     }
 
     @PostMapping("/user_register")

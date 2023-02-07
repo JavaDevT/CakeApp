@@ -1,4 +1,4 @@
-package com.cakeshop.org.view.vieworder;
+package com.cakeshop.org.view.admin.vieworder;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

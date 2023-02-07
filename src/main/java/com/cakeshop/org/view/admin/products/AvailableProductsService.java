@@ -1,4 +1,4 @@
-package com.cakeshop.org.view.products;
+package com.cakeshop.org.view.admin.products;
 
 import com.cakeshop.org.model.AddProducts;
 
