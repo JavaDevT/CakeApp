@@ -2,16 +2,25 @@ package com.cakeshop.org.view.accounts;
 
 
 import com.cakeshop.org.model.UserDetails;
+import com.cakeshop.org.model.baseresponse.BaseResponse;
+import com.cakeshop.org.utils.ResponseHandler;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
+import java.util.Objects;
+import java.util.Optional;
 
 @Controller
 public class AccountMgmtController {
@@ -19,6 +28,9 @@ public class AccountMgmtController {
     @Autowired
     @Qualifier(value = "accountsService")
     AccountsService accountsDao;
+
+    @Autowired
+    ResponseHandler responseHandler;
 
     @GetMapping("/login")
     public String login(HttpServletRequest httpServletRequest) {
@@ -37,6 +49,11 @@ public class AccountMgmtController {
 
     @GetMapping("/welcome-user")
     public String welcomeUser() {
+        return "welcome-user";
+    }
+
+    @PostMapping("/welcome-user")
+    public String welcomseUser(@Validated @RequestBody Object o) {
         return "welcome-user";
     }
 
@@ -64,27 +81,34 @@ public class AccountMgmtController {
     }
 */
 
-    @PostMapping("/login_user")
-    public String accountLogin(ModelMap model, HttpSession httpSession, @RequestParam String username, @RequestParam String userPassword) {
-        UserDetails data = accountsDao.checkUserLogin(userPassword, username);
-        if (data != null) {
-            if (data.isAdmin()) {
-                httpSession.setAttribute("loginUser", "admin");
-                return "redirect:/welcome_admin";
-            } else {
-                return "redirect:/welcome-user";
-            }
+    // @GetMapping("login_user/{username}")
+//    @Validated
+    //@RequestMapping(value = "/employees/{username}/{password}",method = RequestMethod.GET)
+    @GetMapping(path = {"/employees/{username}/{password}"})
 
+    public ResponseEntity<BaseResponse> loginUser(@PathVariable
+                                                  String username, @PathVariable
+                                                  String password) {
+        //  if(result.hasErrors()){
+        //      return responseHandler.failureResponse(404, Objects.requireNonNull(result.getFieldError()).toString(), false);
+        //  }
+        // public String loginUser(@RequestParam Long id) {
+        UserDetails data = accountsDao.checkUserLogin(null, username);
+        System.out.println(data.getAddressLineOne());
+        if (data != null) {
+            return responseHandler.successResponse(200, "Success", true, new UserDetails());
         }
-        model.addAttribute("userData", "no user found");
-        return "login";
+        return responseHandler.failureResponse(404, "User not found", false);
+    }
+
+    @PostMapping(path = {"/get/image/{name}"})
+    public ResponseEntity<?> getImage(@PathVariable("name") String name) throws IOException {
+        return ResponseEntity.ok().body("Hi user");
 
     }
 
     @PostMapping("/user_register")
-    public String accountRegister(ModelMap model, @RequestParam String username, @RequestParam String password,
-                                  @RequestParam String addressLine1, @RequestParam() String addressLine2,
-                                  @RequestParam() String pinCode, @RequestParam String number) {
+    public ResponseEntity<BaseResponse> accountRegister(ModelMap model, @RequestParam String username, @RequestParam String password, @RequestParam String addressLine1, @RequestParam() String addressLine2, @RequestParam() String pinCode, @RequestParam String number) {
         UserDetails details = new UserDetails();
         details.setUsername(username);
         details.setPassword(password);
@@ -95,11 +119,10 @@ public class AccountMgmtController {
         String data = accountsDao.userRegister(details);
 
         if (data.equals("success")) {
-            model.addAttribute("message", "Registered Successfully");
-            return "login";
+
+            return responseHandler.successResponse(200, "Success", true, details);
         }
-        model.addAttribute("message", data);
-        return "register";
+        return responseHandler.failureResponse(404, data, true);
     }
 
 }

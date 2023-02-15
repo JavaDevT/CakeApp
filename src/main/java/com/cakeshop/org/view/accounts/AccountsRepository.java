@@ -4,6 +4,7 @@ package com.cakeshop.org.view.accounts;
 import com.cakeshop.org.utils.HbmConfigApp;
 import com.cakeshop.org.model.AdminLogin;
 import com.cakeshop.org.model.UserDetails;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class AccountsRepository implements AccountsDao {
     private HbmConfigApp hibernateConfig;
 
     @Override
-    public UserDetails getAvailableUser(String username, String pass) {
+    public UserDetails getAvailableUser(@NotNull String username, String pass) {
         Session session = hibernateConfig.getSessionFactory().openSession();
         Query query = session.createQuery("from UserDetails where userName=:userName and password=:password");
         query.setParameter("userName", username);
